@@ -1,6 +1,7 @@
-{:id :terminal-profiles
- :name "Terminal Profiles"
- :description "Overrides the default profile popover with a terminal aesthetic."
+{:id :scheduled-send
+ :name "Scheduled Send"
+ :description "Adds scheduled sending to the composer's send button."
  :version "1.0.0"
- :theme-url "https://cdn.jsdelivr.net/gh/Paradise-in-Matrix/plugin-template@main/dist/retro.css"
+;; :theme-url "http://localhost:3000/schedule-send.css"
+ :theme-url "https://cdn.jsdelivr.net/gh/Paradise-in-Matrix/schedule-send@main/dist/schedule-send.css"
  :external-scripts []}
