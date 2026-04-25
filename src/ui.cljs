@@ -62,24 +62,26 @@
 (defoverride timeline-send-button [{:keys [submit-message! editor attachments]}]
   (let [active-room-id @(rf/subscribe [:rooms/active-id])]
     [:button.timeline-send-btn
-     {:on-click (fn [e]
-                  (.preventDefault e)
-                  (.stopPropagation e)
-                  (submit-message!))
-      :on-context-menu (fn [e]
-                         (.preventDefault e)
-                         (.stopPropagation e)
-                         (when editor
-                           (let [body (.getText editor)
-                                 formatted-body (composer/get-matrix-formatted-body editor)]
-                             (rf/dispatch [:ui/open-modal :plugin-portal
-                                           {:render-fn scheduler-modal-content
-                                            :room-id active-room-id
-                                            :content body
-                                            :formatted-body formatted-body
-                                            :backdrop-props {:class "lightbox-backdrop"}
-                                            :window-props   {:style {:background "transparent"
-                                                                     :box-shadow "none"
-                                                                     :padding "0"
-                                                                     :border "none"}}}]))))}
+     (merge
+      {:on-click (fn [e]
+                   (.preventDefault e)
+                   (.stopPropagation e)
+                   (submit-message!))}
+      (global-ui/long-press-props
+       (fn [_ _]
+         (when editor
+           (let [body (.getText editor)
+                 formatted-body (composer/get-matrix-formatted-body editor)
+                 clear-editor!  #(-> editor .chain .clearContent .run)]
+             (rf/dispatch [:ui/open-modal :plugin-portal
+                           {:render-fn scheduler-modal-content
+                            :room-id active-room-id
+                            :content body
+                            :formatted-body formatted-body
+                            :clear-fn clear-editor!
+                            :backdrop-props {:class "lightbox-backdrop"}
+                            :window-props   {:style {:background "transparent"
+                                                     :box-shadow "none"
+                                                     :padding "0"
+                                                     :border "none"}}}]))))))
      [svg/send]]))
