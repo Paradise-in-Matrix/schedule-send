@@ -1,0 +1,39 @@
+.scheduler-modal {
+    padding: 24px;
+    background: #1e1e1e;
+    color: white;
+    border-radius: 8px;
+}
+
+.scheduler-title {
+    margin-top: 0;
+}
+
+.scheduler-label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.scheduler-input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+}
+
+.scheduler-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.cancel-btn {
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.submit-btn {
+    padding: 8px 16px;
+    cursor: pointer;
+    background: #0f8aff;
+    color: white;
+}
