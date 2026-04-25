@@ -35,7 +35,7 @@
            (log/error "Worker failed to schedule event:" (:msg res)))))
      {})))
 
-(defn scheduler-modal-content [{:keys [room-id content formatted-body]}]
+(defn scheduler-modal-content [{:keys [room-id content formatted-body clear-fn]}]
   (r/with-let [!state   (r/atom {:schedule-time (current-local-datetime)})
                close-fn #(rf/dispatch [:ui/close-modal])]
     (let [{:keys [schedule-time]} @!state]
