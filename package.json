@@ -1,9 +1,10 @@
 {
-    "name": "paradise-plugin",
+    "name": "schedule-send",
     "version": "1.0.0",
-    "description": "A custom plugin for Paradise",
+    "description": "A plugin that enables scheduling messages to be sent later in the Matrix Client Paradise",
     "scripts": {
         "build": "clj -M:build",
         "serve": "npx serve dist -C --cors"
     }
 }
+
