@@ -30,7 +30,7 @@
                                                          :content        content
                                                          :formatted-body formatted-body
                                                          :delay-ms       delay-ms}}))]
-         (if (= (:status res) :success)
+         (if (= (:status res) "success")
            (log/info "Delayed event scheduled successfully via worker")
            (log/error "Worker failed to schedule event:" (:msg res)))))
      {})))
