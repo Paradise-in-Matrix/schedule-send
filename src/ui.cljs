@@ -55,6 +55,7 @@
          {:disabled (empty? schedule-time)
           :on-click (fn []
                       (rf/dispatch [:message/schedule room-id content schedule-time formatted-body])
+                      (when clear-fn (clear-fn))
                       (close-fn))}
          "Schedule Send"]]])))
 
