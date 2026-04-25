@@ -7,7 +7,8 @@
             [cljs.core.async :refer [go <!]]
             [cljs-workers.core :as workers]
             [utils.svg :as svg]
-            [input.composer :as composer]))
+            [input.composer :as composer]
+            [utils.global-ui :as global-ui]))
 
 (defn current-local-datetime []
   (let [now    (js/Date.)
