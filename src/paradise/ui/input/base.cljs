@@ -1,14 +1,14 @@
-(ns ui
-  (:require-macros [utils.macros :refer [defoverride]])
-  (:require [client.state :as state]
+(ns paradise.ui.input.base
+  (:require-macros [paradise.shared.utils.macros :refer [defoverride]])
+  (:require [paradise.shared.client.state :as state]
             [re-frame.core :as rf]
             [reagent.core :as r]
             [taoensso.timbre :as log]
             [cljs.core.async :refer [go <!]]
             [cljs-workers.core :as workers]
-            [utils.svg :as svg]
-            [input.composer :as composer]
-            [utils.global-ui :as global-ui]))
+            [paradise.shared.utils.svg :as icons]
+            [paradise.ui.input.composer :as composer]
+            [paradise.ui.global :as global-ui]))
 
 (defn current-local-datetime []
   (let [now    (js/Date.)
@@ -73,6 +73,8 @@
            (let [body (.getText editor)
                  formatted-body (composer/get-matrix-formatted-body editor)
                  clear-editor!  #(-> editor .chain .clearContent .run)]
+             (js/console.error clear-editor!)
+             (log/error clear-editor!)
              (rf/dispatch [:ui/open-modal :plugin-portal
                            {:render-fn scheduler-modal-content
                             :room-id active-room-id
@@ -83,5 +85,8 @@
                             :window-props   {:style {:background "transparent"
                                                      :box-shadow "none"
                                                      :padding "0"
-                                                     :border "none"}}}]))))))
-     [svg/send]]))
+                                                     :border "none"}}}])))))
+
+
+      )
+     [icons/send]]))
