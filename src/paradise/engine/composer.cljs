@@ -1,10 +1,10 @@
-(ns worker
+(ns paradise.engine.composer
   (:require [cljs.core.async :refer [go]]
             [cljs.core.async.interop :refer-macros [<p!]]
             [cljs-workers.worker :as worker]
             [clojure.string :as str]
-            [worker.state :as state]
-            [utils.net :as net]))
+            [paradise.engine.state :as state]
+            [net :as net]))
 
 (worker/register :send-delayed-event
                  (fn [{:keys [room-id content formatted-body delay-ms]}]
